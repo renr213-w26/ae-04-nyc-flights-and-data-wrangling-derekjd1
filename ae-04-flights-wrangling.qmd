@@ -103,11 +103,14 @@ flights |>
 #| label: arrange-delays
 
 # add code here
+flights |>
+  arrange(dep_delay)
 ```
 
 -   Question: What does it mean for the `dep_delay` to have a negative value?
 
-Add your response here.
+Add your response here. 
+If the dep_delay is negative then the flight departed earlier then expected.
 
 -   Arrange the data by descending departure delay, so the flights with the longest departure delays will be at the top.
 
@@ -115,6 +118,8 @@ Add your response here.
 #| label: arrange-delays-desc
 
 # add code here
+flights |>
+  arrange(desc(dep_delay))
 ```
 
 -   **Your turn:** Create a data frame that only includes the plane tail number (`tailnum`), carrier (`carrier`), and departure delay for the flight with the longest departure delay. What is the plane tail number (`tailnum`) for this flight?
@@ -123,6 +128,10 @@ Add your response here.
 #| label: longest-delay
 
 # add code here
+flights |>
+  arrange(desc(dep_delay)) |>
+  select(tailnum, carrier, dep_delay) |>
+  slice(1)
 ```
 
 ## Exercise 6 - `filter()`
