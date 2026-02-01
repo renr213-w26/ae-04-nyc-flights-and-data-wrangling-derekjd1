@@ -15,9 +15,10 @@ library(nycflights13)
 ## Exercise 1
 
 **Your turn:** Fill in the blanks:
+# using View(flights)
 
-The `flights` data frame has \_\_\_ rows.
-Each row represents a \_\_\_.
+The `flights` data frame has 336,776 rows.
+Each row represents a flight departing from a NYC airport in 2013.
 
 ## Exercise 2
 
