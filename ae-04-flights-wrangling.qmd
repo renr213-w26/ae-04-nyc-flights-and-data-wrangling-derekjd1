@@ -81,6 +81,8 @@ flights |>
 #| label: slice
 
 # add code here
+flights |>
+  slice(1:5)
 ```
 
 -   Display the last two rows of the `flights` data frame.
@@ -89,6 +91,8 @@ flights |>
 #| label: last-two
 
 # add code here
+flights |>
+  slice((n() - 1):n())
 ```
 
 ## Exercise 5 - `arrange()`
