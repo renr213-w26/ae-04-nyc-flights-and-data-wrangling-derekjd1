@@ -142,6 +142,8 @@ flights |>
 #| label: rdu
 
 # add code here
+flights |>
+  filter(dest == "RDU")
 ```
 
 -   Filter for all rows where the destination airport is RDU and the arrival delay is less than 0.
@@ -150,11 +152,15 @@ flights |>
 #| label: rdu-ontime
 
 # add code here
+flights |>
+  filter(dest == "RDU", arr_delay < 0)
 ```
 
 -   **Your turn:** Describe what the code is doing in words.
 
 Add response here.
+This code snippet keeps all the flights that meet both the conditions of having a 
+destination of RDU or GSO and the arrival delay or departure delay is less then 0 (arrived early.
 
 ```{r}
 #| label: nc-early
