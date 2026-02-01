@@ -28,6 +28,7 @@ Each row represents a flight departing from a NYC airport in 2013.
 #| label: column-names
 
 # add code here
+names(flights)
 ```
 
 ## Exercise 3 - `select()`
