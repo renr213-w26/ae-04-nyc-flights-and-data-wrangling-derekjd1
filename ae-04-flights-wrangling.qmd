@@ -237,6 +237,11 @@ flights |>
 #| label: calculate-mph
 
 # add code here
+flights |>
+  mutate(
+    air_time_hours = air_time / 60,
+    mph = distance / air_time_hours
+  )
 ```
 
 -   **Your turn:** First, count the number of flights each month, and then calculate the proportion of flights in each month. What proportion of flights take place in July?
@@ -245,6 +250,16 @@ flights |>
 #| label: months-prop
 
 # add code here
+flights |>
+  count(month) |>
+  mutate(proportion = n / sum(n)) |>
+  arrange(month)
+
+flights |>
+  count(month) |>
+  mutate(proportion = n / sum(n)) |>
+  arrange(month == 7)
+
 ```
 
 -   Create a new variable, `rdu_bound`, which indicates whether the flight is to RDU or not. Then, for each departure airport (`origin`), calculate what proportion of flights originating from that airport are to RDU.
@@ -253,6 +268,10 @@ flights |>
 #| label: rdu-origin-prop
 
 # add code here
+flights |> 
+  mutate(rdu_bound = dest == "RDU") |>
+  group_by(origin) |>
+  summarize(proportion_to_rdu = mean(rdu_bound))
 ```
 
 ## Exercise 9 - `summarize()`
