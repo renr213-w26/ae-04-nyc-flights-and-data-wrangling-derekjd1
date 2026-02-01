@@ -198,6 +198,9 @@ flights |>
 #| label: count-dest
 
 # add code here
+flights |>
+  count(dest, sort = TRUE)
+
 ```
 
 -   In which month was there the fewest number of flights? How many flights were there in that month?
@@ -206,6 +209,12 @@ flights |>
 #| label: count-month
 
 # add code here
+
+flights |>
+  count(month) |>
+  arrange(n) |>
+  slice(1)
+
 ```
 
 -   **Your turn:** On which date (month + day) was there the largest number of flights? How many flights were there on that day?
@@ -214,6 +223,10 @@ flights |>
 #| label: count-date
 
 # add code here
+
+flights |>
+  count(month, day, sort = TRUE) |>
+  slice(1)
 ```
 
 ## Exercise 8 - `mutate()`
