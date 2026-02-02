@@ -324,6 +324,10 @@ Try these on your own, either in class if you finish early, or after class.
 #| label: add-practice-1
 
 # add code here
+flights |>
+  filter(!is.na(dep_time)) |>
+  mutate(dep_delay_hours = dep_delay / 60) |>
+  select(year, month, day, dep_time, dep_delay, dep_delay_hours)
 ```
 
 2.  For each airplane (uniquely identified by `tailnum`), use a `group_by()` paired with `summarize()` to find the sample size, mean, and standard deviation of flight distances. Then include only the top 5 and bottom 5 airplanes in terms of mean distance traveled per flight in the final data frame.
@@ -332,4 +336,28 @@ Try these on your own, either in class if you finish early, or after class.
 #| label: add-practice-2
 
 # add code here
+plane_info <- flights |>
+  filter(!is.na(tailnum)) |>
+  group_by(tailnum) |>
+  summarize(
+    n = n(),
+    mean_distance = mean(distance, na.rm = TRUE),
+    standard_deviation_dist = sd(distance, na.rm = TRUE)
+  )
+
+top5 <- plane_info |>
+  arrange(desc(mean_distance)) |>
+  slice(1:5)
+
+bottom5 <- plane_info |>
+  arrange(mean_distance) |>
+  slice(1:5)
+
+bind_rows(bottom5, top5)
 ```
+
+I used bind rows for the last question and found information on how to use bind rows here:
+https://dplyr.tidyverse.org/reference/bind_rows.html 
+This is from the tidyverse and dplyr website.
+
+
