@@ -1,7 +1,7 @@
 ---
 title: "AE 04: NYC flights + data wrangling"
 author: "Derek Dubrule"
-date: "Feb 1st, 2026"
+date: "2026-02-01"
 ---
 
 ```{r}
